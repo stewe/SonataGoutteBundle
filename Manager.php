@@ -26,7 +26,7 @@ class Manager
             return false;
         }
         
-        return $this->getClient($configuration['config'], $configuration['server']);
+        return $this->getClient($configuration['server']);
     }
 
     public function addClientConfiguration($name, $config)
@@ -34,10 +34,10 @@ class Manager
         $this->client_configurations[$name] = $config;
     }
 
-    public function getClient(array $zendConfig = array(), array $server = array(), History $history = null, CookieJar $cookieJar = null)
+    public function getClient(array $server = array(), History $history = null, CookieJar $cookieJar = null)
     {
 
-        return new Client($zendConfig, $server, $history, $cookieJar);
+        return new Client($server, $history, $cookieJar);
     }
 
     public function setClientConfiguration($client_configurations)
